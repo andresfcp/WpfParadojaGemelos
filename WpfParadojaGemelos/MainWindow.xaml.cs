@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,15 +30,15 @@ namespace WpfParadojaGemelos
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
-            double tObservador = 0;
             double tViajero = double.Parse(txtTiempo.Text);
-            double porcentajeC = double.Parse(txtVelocidad.Text);
+            double porcentajeC = double.Parse(txtVelocidad.Text,CultureInfo.InvariantCulture);
 
-            tObservador = tViajero / (Math.Sqrt(1 - (Math.Pow(porcentajeC,2) / 10000)));
+            double tObservador = tViajero / (Math.Sqrt(1 - (Math.Pow(porcentajeC,2) / 10000)));
 
             lblTiempo2.Visibility = Visibility.Visible;
             lblResultado.Content = tObservador.ToString();
         }
 
     }
+
 }
