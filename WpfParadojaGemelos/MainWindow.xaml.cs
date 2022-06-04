@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfParadojaGemelos
 {
@@ -25,7 +13,7 @@ namespace WpfParadojaGemelos
         {
             InitializeComponent();
 
-          
+
         }
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
@@ -50,7 +38,7 @@ namespace WpfParadojaGemelos
 
         private void txtTiempo_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key.Equals (Key.Return))
+            if (e.Key.Equals(Key.Return))
                 txtVelocidad.Focus();
 
         }
