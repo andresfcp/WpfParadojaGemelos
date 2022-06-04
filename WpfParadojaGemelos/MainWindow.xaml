@@ -8,14 +8,14 @@
         Title="Paradoja de los Gemelos" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblTiempo" Content="Tiempo del viajero" HorizontalAlignment="Left" Margin="53,33,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" TabIndex="0"/>
-        <TextBox x:Name="txtTiempo" HorizontalAlignment="Left" Margin="446,74,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldTiempoV, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="120" FontSize="16"/>
+        <TextBox x:Name="txtTiempo" HorizontalAlignment="Left" Margin="446,74,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldTiempoV, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" FontSize="16" KeyDown="txtTiempo_KeyDown"/>
         <Label x:Name="lblVelocidad" Content="% Velocidad de la luz" HorizontalAlignment="Left" Margin="53,169,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="txtVelocidad" HorizontalAlignment="Left" Margin="446,201,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldPorcentajeC, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" FontSize="16" TabIndex="1"/>
+        <TextBox x:Name="txtVelocidad" HorizontalAlignment="Left" Margin="446,201,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldPorcentajeC, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" FontSize="16" TabIndex="1" KeyDown="txtVelocidad_KeyDown"/>
         <Label x:Name="lblTiempo2" Content="Tiempo del Observador" HorizontalAlignment="Left" Margin="59,289,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Visibility="Hidden"/>
         <Label x:Name="lblResultado"  HorizontalAlignment="Left" Margin="68,315,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Width="546" Height="65"/>
-        <Button x:Name="btnCalcular" Content="Calcular" HorizontalAlignment="Left" Margin="622,55,0,0" VerticalAlignment="Top" FontSize="16" Height="38" Width="90" Click="btnCalcular_Click" TabIndex="2"/>
+        <Button x:Name="btnCalcular" Content="_Calcular" HorizontalAlignment="Left" Margin="622,55,0,0" VerticalAlignment="Top" FontSize="16" Height="38" Width="90" Click="btnCalcular_Click" IsDefault="True" TabIndex="2"/>
         <Slider x:Name="sldTiempoV" HorizontalAlignment="Left" Margin="68,79,0,0" VerticalAlignment="Top" Width="373" Minimum="1" Maximum="50" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Height="36"/>
         <Slider x:Name="sldPorcentajeC" HorizontalAlignment="Left" Margin="68,205,0,0" VerticalAlignment="Top" Width="373" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5"  Height="36"/>
-        
+
     </Grid>
 </Window>

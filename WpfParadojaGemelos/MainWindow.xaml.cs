@@ -48,6 +48,18 @@ namespace WpfParadojaGemelos
             lblResultado.Content = tObservador.ToString();
         }
 
+        private void txtTiempo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals (Key.Return))
+                txtVelocidad.Focus();
+
+        }
+
+        private void txtVelocidad_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Return))
+                btnCalcular.Focus();
+        }
     }
 
 }
