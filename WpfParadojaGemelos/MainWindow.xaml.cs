@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,6 +10,8 @@ namespace WpfParadojaGemelos
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Dato> infoTabla = new ObservableCollection<Dato>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +37,9 @@ namespace WpfParadojaGemelos
 
             lblTiempo2.Visibility = Visibility.Visible;
             lblResultado.Content = tObservador.ToString();
+
+            infoTabla.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
+            DGDatos.ItemsSource = infoTabla;
         }
 
         private void txtTiempo_KeyDown(object sender, KeyEventArgs e)
@@ -47,6 +53,13 @@ namespace WpfParadojaGemelos
         {
             if (e.Key.Equals(Key.Return))
                 btnCalcular.Focus();
+        }
+
+        public class Dato
+        {
+            public double Tiempo_Viajero { get; set; }
+            public double Porcentaje_C { get; set; }
+            public double Tiempo_Observador { get; set; }
         }
     }
 

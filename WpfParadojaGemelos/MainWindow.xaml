@@ -7,15 +7,32 @@
         mc:Ignorable="d"
         Title="Paradoja de los Gemelos" Height="450" Width="800">
     <Grid>
-        <Label x:Name="lblTiempo" Content="Tiempo del viajero" HorizontalAlignment="Left" Margin="53,33,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" TabIndex="0"/>
-        <TextBox x:Name="txtTiempo" HorizontalAlignment="Left" Margin="446,74,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldTiempoV, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" FontSize="16" KeyDown="txtTiempo_KeyDown"/>
-        <Label x:Name="lblVelocidad" Content="% Velocidad de la luz" HorizontalAlignment="Left" Margin="53,169,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="txtVelocidad" HorizontalAlignment="Left" Margin="446,201,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldPorcentajeC, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" FontSize="16" TabIndex="1" KeyDown="txtVelocidad_KeyDown"/>
-        <Label x:Name="lblTiempo2" Content="Tiempo del Observador" HorizontalAlignment="Left" Margin="59,289,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Visibility="Hidden"/>
-        <Label x:Name="lblResultado"  HorizontalAlignment="Left" Margin="68,315,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Width="546" Height="65"/>
-        <Button x:Name="btnCalcular" Content="_Calcular" HorizontalAlignment="Left" Margin="622,55,0,0" VerticalAlignment="Top" FontSize="16" Height="38" Width="90" Click="btnCalcular_Click" IsDefault="True" TabIndex="2"/>
-        <Slider x:Name="sldTiempoV" HorizontalAlignment="Left" Margin="68,79,0,0" VerticalAlignment="Top" Width="373" Minimum="1" Maximum="50" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Height="36"/>
-        <Slider x:Name="sldPorcentajeC" HorizontalAlignment="Left" Margin="68,205,0,0" VerticalAlignment="Top" Width="373" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5"  Height="36"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="191*"/>
+            <RowDefinition Height="109*"/>
+            <RowDefinition Height="109*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="273*"/>
+            <ColumnDefinition Width="527*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblTiempo" Content="Tiempo del viajero" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" TabIndex="0" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="txtTiempo" HorizontalAlignment="Left" Margin="336,42,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldTiempoV, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" Grid.Row="1" Grid.Column="1" FontSize="16" KeyDown="txtTiempo_KeyDown"/>
+        <Label x:Name="lblVelocidad" Content="% Velocidad de la luz" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="txtVelocidad" HorizontalAlignment="Left" Margin="336,120,0,0" TextWrapping="Wrap" Text="{Binding ElementName=sldPorcentajeC, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="168" Grid.Row="1" Grid.Column="1" FontSize="16" TabIndex="1" KeyDown="txtVelocidad_KeyDown"/>
+        <Label x:Name="lblTiempo2" Content="Tiempo del Observador" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.Row="3" Grid.Column="1" Visibility="Hidden"/>
+        <Label x:Name="lblResultado"  HorizontalAlignment="Center" Margin="0,34,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Width="495" Height="65" Grid.Row="3" Grid.Column="1"/>
+        <Button x:Name="btnCalcular" Content="_Calcular" HorizontalAlignment="Left" Margin="407,28,0,0" VerticalAlignment="Top" FontSize="16" Height="38" Width="90" Click="btnCalcular_Click" IsDefault="True" TabIndex="2" Grid.Column="1" Grid.Row="2"/>
+        <Slider x:Name="sldTiempoV" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="322" Minimum="1" Maximum="50" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Height="36" Grid.Column="1" Grid.Row="1"/>
+        <Slider x:Name="sldPorcentajeC" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="322" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5"  Height="36" Grid.Column="1" Grid.Row="1"/>
+        <DataGrid x:Name="DGDatos" Grid.Row="1" Grid.RowSpan="3" d:ItemsSource="{Binding}" Margin="10,0,10,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tiempo Viajero" Binding="{Binding Tiempo_Viajero}" />
+                <DataGridTextColumn Header="% Vel luz" Binding="{Binding Porcentaje_C}" />
+                <DataGridTextColumn Header="Tiempo Observ." Binding="{Binding Tiempo_Observador}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        
     </Grid>
 </Window>
