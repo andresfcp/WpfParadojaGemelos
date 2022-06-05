@@ -55,11 +55,22 @@ namespace WpfParadojaGemelos
                 btnCalcular.Focus();
         }
 
+        private void btnLimpiarGrid_Click(object sender, RoutedEventArgs e)
+        {
+            infoTabla.Clear();
+            DGDatos.ItemsSource = infoTabla;
+        }
+
         public class Dato
         {
             public double Tiempo_Viajero { get; set; }
             public double Porcentaje_C { get; set; }
             public double Tiempo_Observador { get; set; }
+        }
+
+        private void btnEliminarElemento_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
