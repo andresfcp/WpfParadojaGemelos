@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Input;
 
@@ -61,16 +62,28 @@ namespace WpfParadojaGemelos
             DGDatos.ItemsSource = infoTabla;
         }
 
-        public class Dato
-        {
-            public double Tiempo_Viajero { get; set; }
-            public double Porcentaje_C { get; set; }
-            public double Tiempo_Observador { get; set; }
-        }
-
         private void btnEliminarElemento_Click(object sender, RoutedEventArgs e)
         {
+            Object obj = DGDatos.SelectedValue;
+            Dato? dato = obj as Dato;
+            if (dato != null)
+            {
+                //MessageBox.Show(dato.Porcentaje_C.ToString());
+                infoTabla.Remove(dato);
+                DGDatos.ItemsSource = infoTabla;
+            }
+            else
+                MessageBox.Show("Seleccione un elemento de la lista","Advertencia");
+        }
 
+        public class Dato
+        {
+            [Display(Name = "Tiempo Viajero")]
+            public double Tiempo_Viajero { get; set; }
+            [Display(Name = "% Velocidad Luz")]
+            public double Porcentaje_C { get; set; }
+            [Display(Name = "Timempo Observador")]
+            public double Tiempo_Observador { get; set; }
         }
     }
 
