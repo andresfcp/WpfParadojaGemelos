@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfParadojaGemelos.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfParadojaGemelos"
+        mc:Ignorable="d"
+        Title="Acerca de..." Height="336" Width="460" WindowStyle="ToolWindow" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="98" Margin="193,0,0,0" VerticalAlignment="Center" Width="100" Source="/acortes.png"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.1b" FontSize="12" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblAcortes" TextWrapping="Wrap" Text="ACortes Software Team:" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock x:Name="tblnombre" TextWrapping="Wrap" Text="Andrés Cortés" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock/>
+            
+            <TextBlock HorizontalAlignment="Center">
+                <Span xml:space="preserve"><Hyperlink NavigateUri="https://www.acortes.co">acortes.co</Hyperlink></Span>
+            </TextBlock>
+            <TextBlock x:Name="tblTitulo_Copy1" TextWrapping="Wrap" Text="acortes.co" FontSize="12" HorizontalAlignment="Center" />
+
+            <TextBlock x:Name="tblTitulo_Copy3" TextWrapping="Wrap" Text="Paradoja de los Gemelos 0.1" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock x:Name="tblCopyRight" TextWrapping="Wrap" Text="©2022 - ACortes Software" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
