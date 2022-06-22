@@ -19,17 +19,17 @@
         <StackPanel Grid.Row="1">
             <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
             <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.1b" FontSize="12" HorizontalAlignment="Center"/>
+            <TextBlock/>
             <TextBlock x:Name="tblAcortes" TextWrapping="Wrap" Text="ACortes Software Team:" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBlock x:Name="tblnombre" TextWrapping="Wrap" Text="Andrés Cortés" FontSize="12" HorizontalAlignment="Center" />
             <TextBlock/>
-            
+            <TextBlock x:Name="tblTitulo_Copy1" TextWrapping="Wrap" Text="Agradecimientos a:" FontSize="12" HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBlock x:Name="tblTitulo_Copy3" TextWrapping="Wrap" Text="N. Maldonado" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock></TextBlock>
+            <TextBlock x:Name="tblCopyRight" TextWrapping="Wrap" Text="©2022 - ACortes Software" HorizontalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center">
                 <Span xml:space="preserve"><Hyperlink NavigateUri="https://www.acortes.co">acortes.co</Hyperlink></Span>
             </TextBlock>
-            <TextBlock x:Name="tblTitulo_Copy1" TextWrapping="Wrap" Text="acortes.co" FontSize="12" HorizontalAlignment="Center" />
-
-            <TextBlock x:Name="tblTitulo_Copy3" TextWrapping="Wrap" Text="Paradoja de los Gemelos 0.1" FontSize="12" HorizontalAlignment="Center" />
-            <TextBlock x:Name="tblCopyRight" TextWrapping="Wrap" Text="©2022 - ACortes Software" HorizontalAlignment="Center"/>
         </StackPanel>
 
     </Grid>

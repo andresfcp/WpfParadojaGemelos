@@ -33,7 +33,8 @@ namespace WpfParadojaGemelos
 
             double tObservador = tViajero / (Math.Sqrt(1 - (Math.Pow(porcentajeC, 2) / 10000)));
 
-            lblTiempo2.Visibility = Visibility.Visible;
+            //lblTiempo2.Visibility = Visibility.Visible;
+            lblTiempo2.Content = "Tiempo del Observador";
             lblResultado.Content = tObservador.ToString();
 
             valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
