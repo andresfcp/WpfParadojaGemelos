@@ -11,13 +11,11 @@ namespace WpfParadojaGemelos
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Dato> infoTabla = new ObservableCollection<Dato>();
+        public ObservableCollection<Dato> valores = new ObservableCollection<Dato>();
 
         public MainWindow()
         {
             InitializeComponent();
-
-
         }
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
@@ -39,15 +37,14 @@ namespace WpfParadojaGemelos
             lblTiempo2.Visibility = Visibility.Visible;
             lblResultado.Content = tObservador.ToString();
 
-            infoTabla.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
-            DGDatos.ItemsSource = infoTabla;
+            valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
+            DGDatos.ItemsSource = valores;
         }
 
         private void txtTiempo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key.Equals(Key.Return))
                 txtVelocidad.Focus();
-
         }
 
         private void txtVelocidad_KeyDown(object sender, KeyEventArgs e)
@@ -58,8 +55,8 @@ namespace WpfParadojaGemelos
 
         private void btnLimpiarGrid_Click(object sender, RoutedEventArgs e)
         {
-            infoTabla.Clear();
-            DGDatos.ItemsSource = infoTabla;
+            valores.Clear();
+            DGDatos.ItemsSource = valores;
         }
 
         private void btnEliminarElemento_Click(object sender, RoutedEventArgs e)
@@ -69,8 +66,8 @@ namespace WpfParadojaGemelos
             if (dato != null)
             {
                 //MessageBox.Show(dato.Porcentaje_C.ToString());
-                infoTabla.Remove(dato);
-                DGDatos.ItemsSource = infoTabla;
+                valores.Remove(dato);
+                DGDatos.ItemsSource = valores;
             }
             else
                 MessageBox.Show("Seleccione un elemento de la lista","Advertencia");
