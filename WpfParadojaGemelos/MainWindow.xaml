@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfParadojaGemelos"
         mc:Ignorable="d"
-        Title="Paradoja de los Gemelos" Height="450" Width="900" ResizeMode="CanMinimize" Icon="/acortes.png">
+        Title="Paradoja de los Gemelos" Height="450" Width="900" ResizeMode="CanMinimize" Icon="/recursos/acortes.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="31*"/>
@@ -48,7 +48,7 @@
         </DataGrid>
         <Button x:Name="btnLimpiarGrid" Content="_Limpiar" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Height="26" Width="57" Click="btnLimpiarGrid_Click" TabIndex="3"/>
         <Button x:Name="btnEliminarElemento" Content="_Eliminar" HorizontalAlignment="Left" Margin="77,0,0,0" VerticalAlignment="Center" FontSize="12" Height="26" Width="57" Click="btnEliminarElemento_Click" TabIndex="3"/>
-        <Image x:Name="image" Source="/cohete.png" Grid.Column="1" HorizontalAlignment="Left" Height="81" Margin="16,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="65"/>
+        <Image x:Name="image" Source="/recursos/cohete.png" Grid.Column="1" HorizontalAlignment="Left" Height="81" Margin="16,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="65"/>
         <Button x:Name="btnAbout" Grid.Column="1" Content="?" HorizontalAlignment="Left" Margin="477,0,0,0" VerticalAlignment="Center" FontSize="16" Width="20" Click="btnAbout_Click"/>
 
     </Grid>
