@@ -28,8 +28,9 @@
             <TextBlock></TextBlock>
             <TextBlock x:Name="tblCopyRight" TextWrapping="Wrap" Text="©2022 - ACortes Software" HorizontalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center">
-                <Span xml:space="preserve"><Hyperlink NavigateUri="https://www.acortes.co">acortes.co</Hyperlink></Span>
+                <Span xml:space="preserve"><Hyperlink NavigateUri="https://acortes.co/" RequestNavigate="Hyperlink_RequestNavigate">acortes.co</Hyperlink></Span>
             </TextBlock>
+            <!--<HyperlinkButton Content="Help" NavigateUri="http://www.contoso.com"/>-->
         </StackPanel>
 
     </Grid>

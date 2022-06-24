@@ -84,7 +84,7 @@ namespace WpfParadojaGemelos
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             About about = new About();
-            about.ShowDialog();
+            about.ShowDialog();          
         }
     }
 
