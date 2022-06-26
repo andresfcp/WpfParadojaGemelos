@@ -1,7 +1,12 @@
-﻿using System;
+﻿using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
+using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace WpfParadojaGemelos
 {
@@ -20,6 +25,34 @@ namespace WpfParadojaGemelos
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
             calcular();
+            MoverCohete();
+        }
+
+
+        private async void MoverCohete()
+        {
+            int x = 0;
+            TranslateTransform mover = new TranslateTransform();
+            for (int i = 0; i < 300; i++)
+            {
+                if (i % 10 == 0)
+                {
+                    x = x + 10;
+                    mover.X = x;
+                    imgCohete.RenderTransform = mover;
+                    await Task.Delay(25);
+                }
+            }
+            for (int i = 0; i < 300; i++)
+            {
+                if (i % 10 == 0)
+                {
+                    x = x - 10;
+                    mover.X = x;
+                    imgCohete.RenderTransform = mover;
+                    await Task.Delay(25);
+                }
+            }
         }
 
 
@@ -40,6 +73,35 @@ namespace WpfParadojaGemelos
             valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
             DGDatos.ItemsSource = valores;
         }
+        
+        private void Graficar()
+        {
+            var plotModel1 = new PlotModel();
+            plotModel1.Title = "% Vel Luz v Tiempo Observador ";
+
+            var ejeX = new LinearAxis();
+            ejeX.MajorGridlineStyle = LineStyle.Solid;
+            ejeX.MinorGridlineStyle = LineStyle.Dot;
+            //ejeX.Minimum = 0;
+            plotModel1.Axes.Add(ejeX);
+
+            var ejeY = new LinearAxis();
+            ejeY.Position = AxisPosition.Bottom;
+            plotModel1.Axes.Add(ejeY);
+            //Hasta aqui todo es común, ahora es asociar el ObservableCollection con el gráfico
+
+            //var lista = new Modelo(); //esto seria valores
+            var linea = new LineSeries();
+            foreach (var dato in valores)
+            {
+                linea.Points.Add(new DataPoint(dato.Porcentaje_C,dato.Tiempo_Observador));
+            }
+            
+            linea.Title = "Valores 1";
+            plotModel1.Series.Add(linea);
+            Grafica.Model = plotModel1;
+        }
+
 
         private void txtTiempo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -73,12 +135,6 @@ namespace WpfParadojaGemelos
                 MessageBox.Show("Seleccione un elemento de la lista","Advertencia");
         }
 
-        public class Dato
-        {
-            public double Tiempo_Viajero { get; set; }
-            public double Porcentaje_C { get; set; }
-            public double Tiempo_Observador { get; set; }
-        }
 
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)
@@ -86,6 +142,13 @@ namespace WpfParadojaGemelos
             About about = new About();
             about.ShowDialog();          
         }
+
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Graficar();
+        }
+
     }
 
 }

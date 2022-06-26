@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfParadojaGemelos"
         mc:Ignorable="d"
+        xmlns:oxy="http://oxyplot.org/wpf"
         Title="Paradoja de los Gemelos" Height="450" Width="900" ResizeMode="CanMinimize" Icon="/recursos/acortes.png">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,7 +27,7 @@
         <Button x:Name="btnCalcular" Content="_Calcular" HorizontalAlignment="Left" Margin="407,28,0,0" VerticalAlignment="Top" FontSize="16" Height="38" Width="90" Click="btnCalcular_Click" IsDefault="True" TabIndex="2" Grid.Column="1" Grid.Row="2"/>
         <Slider x:Name="sldTiempoV" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="322" Minimum="1" Maximum="50" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Height="36" Grid.Column="1" Grid.Row="1"/>
         <Slider x:Name="sldPorcentajeC" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="322" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5"  Height="36" Grid.Column="1" Grid.Row="1"/>
-        <DataGrid x:Name="DGDatos" Grid.Row="1" Grid.RowSpan="3" d:ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,0,10,5" IsReadOnly="True">
+        <DataGrid x:Name="DGDatos" Grid.Row="1" Grid.RowSpan="2" d:ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,0,10,5" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tiempo Viajero" Binding="{Binding Tiempo_Viajero}" />
                 <DataGridTextColumn Header="% Vel luz" Binding="{Binding Porcentaje_C}" />
@@ -48,8 +49,10 @@
         </DataGrid>
         <Button x:Name="btnLimpiarGrid" Content="_Limpiar" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" FontSize="12" Height="26" Width="57" Click="btnLimpiarGrid_Click" TabIndex="3"/>
         <Button x:Name="btnEliminarElemento" Content="_Eliminar" HorizontalAlignment="Left" Margin="77,0,0,0" VerticalAlignment="Center" FontSize="12" Height="26" Width="57" Click="btnEliminarElemento_Click" TabIndex="3"/>
-        <Image x:Name="image" Source="/recursos/cohete.png" Grid.Column="1" HorizontalAlignment="Left" Height="81" Margin="16,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="65"/>
+        <Image x:Name="imgCohete" Source="/recursos/cohete.png" Grid.Column="1" HorizontalAlignment="Left" Height="81" Margin="16,6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="65"/>
         <Button x:Name="btnAbout" Grid.Column="1" Content="?" HorizontalAlignment="Left" Margin="477,0,0,0" VerticalAlignment="Center" FontSize="16" Width="20" Click="btnAbout_Click"/>
+        <oxy:PlotView x:Name="Grafica" Grid.Column="0" Grid.Row="3"/>
+        <Button x:Name="button" Grid.Column="1" Content="Gráfico" HorizontalAlignment="Left" Margin="420,0,0,0" VerticalAlignment="Center" Height="24" Width="51" Click="button_Click"/>
 
     </Grid>
 </Window>
