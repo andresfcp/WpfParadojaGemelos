@@ -39,7 +39,11 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Image x:Name="imgCohete" Source="/starsship.png" Grid.Column="1" HorizontalAlignment="Left" Height="81" Margin="10,329,0,0" VerticalAlignment="Top" Width="46"/>
+        <Image x:Name="imgCohete" Source="/starsship.png" Grid.Column="1" HorizontalAlignment="Left" Height="81" Margin="10,329,0,0" VerticalAlignment="Top" Width="46">
+            <Image.RenderTransform>
+                <TranslateTransform x:Name="AnimacionCohete" X="0" Y="0"/>
+            </Image.RenderTransform>
+        </Image>
         <Grid x:Name="grdContoles" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="31*"/>
@@ -60,4 +64,16 @@
             <Label x:Name="lblResultado" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Width="438" Height="65" Grid.Row="3" VerticalContentAlignment="Top"/>
         </Grid>
     </Grid>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <!--<ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">-->
+                    <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
+                        <DoubleAnimation Storyboard.TargetName="AnimacionCohete" Storyboard.TargetProperty="Y" From="0" To="-325" Duration="0:0:2"/>
+                    </ParallelTimeline>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 </Window>
