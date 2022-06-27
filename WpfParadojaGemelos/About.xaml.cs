@@ -40,7 +40,6 @@ namespace WpfParadojaGemelos
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }
