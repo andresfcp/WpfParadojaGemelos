@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="acercade.png" />
     <None Remove="starsship.png" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="acercade.png" />
     <Resource Include="recursos\acortes.png" />
     <Resource Include="recursos\cohete.png" />
     <Resource Include="starsship.png" />

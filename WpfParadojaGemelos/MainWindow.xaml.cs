@@ -17,12 +17,13 @@ namespace WpfParadojaGemelos
         public MainWindow()
         {
             InitializeComponent();
+            btnGrafico.Visibility = Visibility.Hidden;
         }
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
             calcular();
-            MoverCohete();
+            //MoverCohete();
         }
 
 
@@ -64,8 +65,24 @@ namespace WpfParadojaGemelos
             valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
             DGDatos.ItemsSource = valores;
         }
-        
 
+        private void autoCalcular()
+        {
+            double tViajero = sldTiempoV.Value;
+            double tObservador;
+            for (int i = 0; i < 100; i++)
+            {
+                tObservador = sldTiempoV.Value / (Math.Sqrt(1 - (Math.Pow(i, 2) / 10000)));
+                lblTiempo2.Content = "Tiempo del Observador";
+                lblResultado.Content = tObservador.ToString();
+
+                valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador });
+            }
+            DGDatos.ItemsSource = valores;
+        }
+
+
+        #region EVENTOS
         private void txtTiempo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key.Equals(Key.Return))
@@ -108,8 +125,34 @@ namespace WpfParadojaGemelos
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Grafico frm = new Grafico(valores);
+            Grafico frm = new Grafico(valores, Convert.ToInt32(sldTiempoV.Value));
             frm.ShowDialog();
         }
+
+        private void chkGraficar_Checked(object sender, RoutedEventArgs e)
+        {
+            btnGrafico.Visibility = Visibility.Visible;
+            valores.Clear();
+            DGDatos.ItemsSource = valores;
+            txtTiempo.Focusable = false;
+            sldTiempoV.Visibility = Visibility.Hidden;
+            autoCalcular();
+        }
+
+
+        private void btnGrafico_Click(object sender, RoutedEventArgs e)
+        {
+            Grafico frm = new Grafico(valores, Convert.ToInt32(sldTiempoV.Value));
+            frm.ShowDialog();
+        }
+
+
+        private void chkGraficar_Unchecked(object sender, RoutedEventArgs e)
+        {
+            btnGrafico.Visibility = Visibility.Hidden;
+            txtTiempo.Focusable = true;
+            sldTiempoV.Visibility = Visibility.Visible;
+        }
+        #endregion
     }
 }
