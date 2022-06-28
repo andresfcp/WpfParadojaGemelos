@@ -139,22 +139,11 @@ namespace WpfParadojaGemelos
             sldTiempoV.Visibility = Visibility.Hidden;
             autoCalcular();
             
-            //DGDatos.Items.Count-1;
-
-            /*DGDatos.SelectedItems.Clear();
-            *//* set the SelectedItem property *//*
-            object item = DGDatos.Items[DGDatos.Items.Count - 1]; // = Product X
+            //muestraen el datagrid el último registro
+            DGDatos.SelectedItems.Clear();
+            object item = DGDatos.Items[DGDatos.Items.Count - 1];
             DGDatos.SelectedItem = item;
-
-            DataGridRow row = DGDatos.ItemContainerGenerator.ContainerFromIndex(DGDatos.Items.Count - 1) as DataGridRow;
-            if (row == null)
-            {
-                *//* bring the data item (Product object) into view
-                 * in case it has been virtualized away *//*
-                DGDatos.ScrollIntoView(item);
-                row = DGDatos.ItemContainerGenerator.ContainerFromIndex(DGDatos.Items.Count - 1) as DataGridRow;
-            }*/
-
+            DGDatos.ScrollIntoView(item);
         }
 
 
