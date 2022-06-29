@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfParadojaGemelos"
         mc:Ignorable="d"
-        Title="Acerca de..." Height="336" Width="460" WindowStyle="ToolWindow" >
+        Title="Acerca de..." Height="336" Width="460" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,7 +18,7 @@
         <Image x:Name="logo" HorizontalAlignment="Left" Height="98" Margin="193,0,0,0" VerticalAlignment="Center" Width="100" Source="/recursos/acortes.png"/>
         <StackPanel Grid.Row="1">
             <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.2b" FontSize="12" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.5b" FontSize="12" HorizontalAlignment="Center"/>
             <TextBlock/>
             <TextBlock x:Name="tblAcortes" TextWrapping="Wrap" Text="ACortes Software Team:" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBlock x:Name="tblnombre" TextWrapping="Wrap" Text="Andrés Cortés" FontSize="12" HorizontalAlignment="Center" />
@@ -30,7 +30,7 @@
             <TextBlock HorizontalAlignment="Center">
                 <Span xml:space="preserve"><Hyperlink NavigateUri="https://acortes.co/" RequestNavigate="Hyperlink_RequestNavigate">acortes.co</Hyperlink></Span>
             </TextBlock>
-            <!--<HyperlinkButton Content="Help" NavigateUri="http://www.contoso.com"/>-->
+            <!--<HyperlinkButton Content="Help" NavigateUri="http://acortes.co/>-->
         </StackPanel>
 
     </Grid>

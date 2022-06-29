@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="Gráfico" Height="450" Width="800" Icon="/recursos/acortes.png" WindowStartupLocation="CenterScreen">
     <Grid>
-        <oxy:PlotView x:Name="Grafica" Grid.Column="0" Grid.Row="3"/>        
+        <oxy:PlotView x:Name="Grafica"/>        
     </Grid>
 </Window>

@@ -137,9 +137,10 @@ namespace WpfParadojaGemelos
             DGDatos.ItemsSource = valores;
             txtTiempo.Focusable = false;
             sldTiempoV.Visibility = Visibility.Hidden;
+
             autoCalcular();
             
-            //muestraen el datagrid el último registro
+            //muestra en el datagrid el último registro
             DGDatos.SelectedItems.Clear();
             object item = DGDatos.Items[DGDatos.Items.Count - 1];
             DGDatos.SelectedItem = item;
