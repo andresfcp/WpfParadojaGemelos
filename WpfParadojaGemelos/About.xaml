@@ -18,7 +18,7 @@
         <Image x:Name="logo" HorizontalAlignment="Left" Height="98" Margin="193,0,0,0" VerticalAlignment="Center" Width="100" Source="/recursos/acortes.png"/>
         <StackPanel Grid.Row="1">
             <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.5b" FontSize="12" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.6b" FontSize="12" HorizontalAlignment="Center"/>
             <TextBlock/>
             <TextBlock x:Name="tblAcortes" TextWrapping="Wrap" Text="ACortes Software Team:" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBlock x:Name="tblnombre" TextWrapping="Wrap" Text="Andrés Cortés" FontSize="12" HorizontalAlignment="Center" />

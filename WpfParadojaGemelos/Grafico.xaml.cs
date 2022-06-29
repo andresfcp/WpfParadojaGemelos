@@ -40,9 +40,9 @@ namespace WpfParadojaGemelos
                 return x.Porcentaje_C.CompareTo(y.Porcentaje_C);
             });*/
 
-            List<Dato> datos = valores.OrderBy(x => x.Porcentaje_C).ToList();
+            //List<Dato> datos = valores.OrderBy(x => x.Porcentaje_C).ToList();
             //Hasta aquí asignamos el ObservableCollection a una lista para poderlo ordenar
-            //queda pendiente ordenar directamente el ObservableCollection
+            valores = new ObservableCollection<Dato>(valores.OrderBy(x => x.Porcentaje_C));
 
             var plotModel1 = new PlotModel();
             plotModel1.Title = "Tiempo Observador vs. % Vel Luz";
@@ -61,12 +61,12 @@ namespace WpfParadojaGemelos
             //Hasta aqui todo es común, ahora es asociar (el ObservableCollection) la lista con el gráfico
 
             var linea = new LineSeries();
-            foreach (var dato in datos)
+            foreach (var dato in valores)
             {
                 linea.Points.Add(new DataPoint(dato.Porcentaje_C, dato.Tiempo_Observador));
             }
-
             linea.Title = "Tiempo Viajero " + tiempoViajero;
+            linea.CanTrackerInterpolatePoints = false;
             plotModel1.Series.Add(linea);
             Grafica.Model = plotModel1;
         }
