@@ -98,8 +98,20 @@ namespace WpfParadojaGemelos
 
         private void btnLimpiarGrid_Click(object sender, RoutedEventArgs e)
         {
-            valores.Clear();
-            DGDatos.ItemsSource = valores;
+            MessageBoxResult resultado;
+            resultado = MessageBox.Show("Está seguro de limpiar los datos de la pantalla", "Paradoja de los Gemelos",MessageBoxButton.YesNo,MessageBoxImage.Exclamation);
+            if (resultado == MessageBoxResult.Yes)
+            {
+                valores.Clear();
+                DGDatos.ItemsSource = valores;
+                sldPorcentajeC.Value = 0;
+                txtTiempo.Focusable = true;
+                chkGraficar.IsChecked = false;
+                sldTiempoV.Visibility = Visibility.Visible;
+                btnGrafico.Visibility = Visibility.Hidden;
+                lblTiempo2.Content = "";
+                lblResultado.Content = "";
+            }
         }
 
         private void btnEliminarElemento_Click(object sender, RoutedEventArgs e)
