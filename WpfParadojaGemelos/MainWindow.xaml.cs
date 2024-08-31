@@ -56,12 +56,18 @@ namespace WpfParadojaGemelos
 
             double tViajero = sldTiempoV.Value;
             double porcentajeC = sldPorcentajeC.Value;
+            double masa = Convert.ToDouble(txtMasaReposo.Text);
 
             double tObservador = tViajero / (Math.Sqrt(1 - (Math.Pow(porcentajeC, 2) / 10000)));
+            double masaRelativa = masa / (Math.Sqrt(1-(Math.Pow(porcentajeC/100,2))));
 
             //lblTiempo2.Visibility = Visibility.Visible;
             lblTiempo2.Content = "Tiempo del Observador";
             lblResultado.Content = tObservador.ToString();
+            if (masa != 0)
+            {
+                txtMasaRelativa.Text = masaRelativa.ToString();
+            }
 
             valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
             DGDatos.ItemsSource = valores;
