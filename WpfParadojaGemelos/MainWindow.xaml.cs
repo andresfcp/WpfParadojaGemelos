@@ -69,7 +69,7 @@ namespace WpfParadojaGemelos
                 txtMasaRelativa.Text = masaRelativa.ToString();
             }
 
-            valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador });
+            valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
             DGDatos.ItemsSource = valores;
         }
 
@@ -77,13 +77,19 @@ namespace WpfParadojaGemelos
         {
             double tViajero = sldTiempoV.Value;
             double tObservador;
+			double masa = Convert.ToDouble(txtMasaReposo.Text);
+            double porcentajeC;
+			double masaRelativa;
+
             for (int i = 0; i < 100; i++)
             {
                 tObservador = sldTiempoV.Value / (Math.Sqrt(1 - (Math.Pow(i, 2) / 10000)));
-                lblTiempo2.Content = "Tiempo del Observador";
+                porcentajeC = Convert.ToDouble(i) / 100;
+				masaRelativa = masa / (Math.Sqrt(1 - (Math.Pow(porcentajeC, 2))));
+				lblTiempo2.Content = "Tiempo del Observador";
                 lblResultado.Content = tObservador.ToString();
 
-                valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador });
+                valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
             }
             DGDatos.ItemsSource = valores;
         }
@@ -117,6 +123,7 @@ namespace WpfParadojaGemelos
                 btnGrafico.Visibility = Visibility.Hidden;
                 lblTiempo2.Content = "";
                 lblResultado.Content = "";
+                txtMasaRelativa.Text = "";
             }
         }
 

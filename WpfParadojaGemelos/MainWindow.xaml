@@ -21,9 +21,10 @@
             <Button x:Name="btnEliminarElemento" Style="{DynamicResource PlantilllaBotonAzul}" Content="Eliminar" HorizontalAlignment="Left" Margin="87,0,0,0" VerticalAlignment="Center" FontSize="12" Height="26" Width="67" Click="btnEliminarElemento_Click" TabIndex="3" ToolTip="Elimina el elemento seleccionado de la tabla de valores"/>
             <DataGrid x:Name="DGDatos" Grid.Row="1"  d:ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,0,10,5" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Tiempo Viajero" Binding="{Binding Tiempo_Viajero}" />
-                    <DataGridTextColumn Header="% Vel luz" Binding="{Binding Porcentaje_C}" />
-                    <DataGridTextColumn Header="Tiempo Observ." Binding="{Binding Tiempo_Observador, StringFormat={}{0:F8}}" />
+                    <DataGridTextColumn Header="T. Viajero" Binding="{Binding Tiempo_Viajero}" />
+                    <DataGridTextColumn Header="% C" Binding="{Binding Porcentaje_C}" />
+                    <DataGridTextColumn Header="T. Observador" Binding="{Binding Tiempo_Observador, StringFormat={}{0:F8}}" />
+                    <DataGridTextColumn Header="Masa relativa" Binding="{Binding Masa_Relativa, StringFormat={}{0:F6}}" />
                     <!-- Aqui insertamos el ProgressBar con el % de la velocidad de la luz y el valor en el TextBlock -->
                     <!-- lo puse no como dato informativo sino para probar que se puede -->
                     <DataGridTemplateColumn Header="%" Width="100">
@@ -71,7 +72,7 @@
             <Label Grid.Row="1" Margin="10,150,0,0" Content="Masa" FontWeight="Bold" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" />
             <TextBox x:Name="txtMasaReposo" Grid.Row="1" Text="0" Margin="10,180,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" FontSize="16"/>
             <Label Grid.Row="1" Margin="200,150,0,0" Content="Masa Relativa" FontWeight="Bold" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="119" />
-            <TextBox x:Name="txtMasaRelativa" Grid.Row="1" Margin="200,180,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" FontSize="16"/>
+            <TextBox x:Name="txtMasaRelativa" Grid.Row="1" Margin="200,180,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158" FontSize="16" IsReadOnly="True"/>
 
             
         </Grid>
