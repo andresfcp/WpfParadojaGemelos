@@ -129,17 +129,33 @@ namespace WpfParadojaGemelos
 
         private void btnEliminarElemento_Click(object sender, RoutedEventArgs e)
         {
-            Object obj = DGDatos.SelectedValue;
-            Dato? dato = obj as Dato;
-            if (dato != null)
-            {
-                //MessageBox.Show(dato.Porcentaje_C.ToString());
-                valores.Remove(dato);
-                DGDatos.ItemsSource = valores;
-            }
-            else
-                MessageBox.Show("Seleccione un elemento de la lista","Advertencia");
-        }
+			//Object obj = DGDatos.SelectedValue;
+			//Dato? dato = obj as Dato;
+			//if (dato != null)
+			//{
+			//    //MessageBox.Show(dato.Porcentaje_C.ToString());
+			//    valores.Remove(dato);
+			//    DGDatos.ItemsSource = valores;
+			//}
+			//else
+			//    MessageBox.Show("Seleccione un elemento de la lista","Advertencia");
+
+			if (DGDatos.SelectedItem is Dato datoSeleccionado)
+			{
+				var resultado = MessageBox.Show("¿Está seguro de que desea eliminar este elemento?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+				if (resultado == MessageBoxResult.Yes)
+				{
+					valores.Remove(datoSeleccionado);
+					DGDatos.ItemsSource = null;
+					DGDatos.ItemsSource = valores;
+				}
+			}
+			else
+			{
+				MessageBox.Show("Por favor, seleccione un elemento de la lista.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
+		}
 
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)

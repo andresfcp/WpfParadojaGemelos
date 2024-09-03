@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfParadojaGemelos"
         mc:Ignorable="d"
-        Title="Acerca de..." Height="336" Width="460" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Acerca de..." Height="336" Width="350" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" MinHeight="336" MinWidth="336">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,7 +15,7 @@
 
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="logo" HorizontalAlignment="Left" Height="98" Margin="193,0,0,0" VerticalAlignment="Center" Width="100" Source="/recursos/acortes.png"/>
+        <Image x:Name="logo" HorizontalAlignment="Center" Height="98" VerticalAlignment="Center" Width="100" Source="/recursos/acortes.png"/>
         <StackPanel Grid.Row="1">
             <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
             <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.8b" FontSize="12" HorizontalAlignment="Center"/>
