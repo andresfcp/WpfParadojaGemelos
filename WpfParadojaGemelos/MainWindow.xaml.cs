@@ -75,7 +75,6 @@ namespace WpfParadojaGemelos
             }
 
             Valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
-            //DGDatos.ItemsSource = valores;  //eliminar
         }
 
         private void autoCalcular()
@@ -96,8 +95,6 @@ namespace WpfParadojaGemelos
 
                 Valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
             }
-            // todos estos son redundantes ahora
-            //DGDatos.ItemsSource = valores;
         }
 
 
@@ -121,7 +118,6 @@ namespace WpfParadojaGemelos
             if (resultado == MessageBoxResult.Yes)
             {
                 Valores.Clear();
-                //DGDatos.ItemsSource = valores;
                 sldPorcentajeC.Value = 0;
                 txtTiempo.Focusable = true;
                 chkGraficar.IsChecked = false;
@@ -153,8 +149,6 @@ namespace WpfParadojaGemelos
 				if (resultado == MessageBoxResult.Yes)
 				{
 					Valores.Remove(datoSeleccionado);
-					//DGDatos.ItemsSource = null;
-					//DGDatos.ItemsSource = valores;
 				}
 			}
 			else
@@ -181,15 +175,13 @@ namespace WpfParadojaGemelos
         {
             btnGrafico.Visibility = Visibility.Visible;
             Valores.Clear();
-            //DGDatos.ItemsSource = valores;
+
             txtTiempo.Focusable = false;
             sldTiempoV.Visibility = Visibility.Hidden;
 
             autoCalcular();
             
-            //TODO: REVISAR ESTO
             //muestra en el datagrid el último registro
-            DGDatos.SelectedItems.Clear();
             object item = DGDatos.Items[DGDatos.Items.Count - 1];
             DGDatos.SelectedItem = item;
             DGDatos.ScrollIntoView(item);

@@ -216,7 +216,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox x:Name="chkGraficar" 
-                              Content="Graficar" 
+                              Content="Autogenerar 0-99%" 
                               VerticalAlignment="Center" 
                               Checked="chkGraficar_Checked" 
                               Unchecked="chkGraficar_Unchecked" 
@@ -267,9 +267,8 @@
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
                 <Storyboard>
-                    <!--<ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">-->
                     <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
-                        <DoubleAnimation Storyboard.TargetName="AnimacionCohete" Storyboard.TargetProperty="Y" From="0" To="-325" Duration="0:0:2"/>
+                        <DoubleAnimation Storyboard.TargetName="AnimacionCohete" Storyboard.TargetProperty="Y" From="0" To="-370" Duration="0:0:2"/>
                     </ParallelTimeline>
                 </Storyboard>
             </BeginStoryboard>
