@@ -2,9 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using WpfParadojaGemelos.Models;
 
 namespace WpfParadojaGemelos
 {
@@ -13,12 +13,17 @@ namespace WpfParadojaGemelos
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Dato> valores = new ObservableCollection<Dato>();
+        //public ObservableCollection<Dato> valores = new ObservableCollection<Dato>();
+        public ObservableCollection<Dato> Valores { get; } = new ObservableCollection<Dato>();
+
 
         public MainWindow()
         {
             InitializeComponent();
             btnGrafico.Visibility = Visibility.Hidden;
+
+            //Asignación única del ItemsSource
+            DGDatos.ItemsSource = Valores;
         }
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
@@ -37,14 +42,14 @@ namespace WpfParadojaGemelos
                 y = y - 4;
                 mover.Y = y;
                 imgCohete.RenderTransform = mover;
-                await Task.Delay(1);
+                await Task.Delay(1).ConfigureAwait(true);
             }
             for (int i = 0; i < 81; i++)
             {                
                 y = y + 4;
                 mover.Y = y;
                 imgCohete.RenderTransform = mover;
-                await Task.Delay(1);
+                await Task.Delay(1).ConfigureAwait(true);
             }
         }
 
@@ -69,8 +74,8 @@ namespace WpfParadojaGemelos
                 txtMasaRelativa.Text = masaRelativa.ToString();
             }
 
-            valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
-            DGDatos.ItemsSource = valores;
+            Valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
+            //DGDatos.ItemsSource = valores;  //eliminar
         }
 
         private void autoCalcular()
@@ -89,9 +94,10 @@ namespace WpfParadojaGemelos
 				lblTiempo2.Content = "Tiempo del Observador";
                 lblResultado.Content = tObservador.ToString();
 
-                valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
+                Valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
             }
-            DGDatos.ItemsSource = valores;
+            // todos estos son redundantes ahora
+            //DGDatos.ItemsSource = valores;
         }
 
 
@@ -114,8 +120,8 @@ namespace WpfParadojaGemelos
             resultado = MessageBox.Show("Está seguro de limpiar los datos de la pantalla", "Paradoja de los Gemelos",MessageBoxButton.YesNo,MessageBoxImage.Exclamation);
             if (resultado == MessageBoxResult.Yes)
             {
-                valores.Clear();
-                DGDatos.ItemsSource = valores;
+                Valores.Clear();
+                //DGDatos.ItemsSource = valores;
                 sldPorcentajeC.Value = 0;
                 txtTiempo.Focusable = true;
                 chkGraficar.IsChecked = false;
@@ -146,9 +152,9 @@ namespace WpfParadojaGemelos
 
 				if (resultado == MessageBoxResult.Yes)
 				{
-					valores.Remove(datoSeleccionado);
-					DGDatos.ItemsSource = null;
-					DGDatos.ItemsSource = valores;
+					Valores.Remove(datoSeleccionado);
+					//DGDatos.ItemsSource = null;
+					//DGDatos.ItemsSource = valores;
 				}
 			}
 			else
@@ -167,20 +173,21 @@ namespace WpfParadojaGemelos
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Grafico frm = new Grafico(valores, Convert.ToInt32(sldTiempoV.Value));
+            Grafico frm = new Grafico(Valores, Convert.ToInt32(sldTiempoV.Value));
             frm.ShowDialog();
         }
 
         private void chkGraficar_Checked(object sender, RoutedEventArgs e)
         {
             btnGrafico.Visibility = Visibility.Visible;
-            valores.Clear();
-            DGDatos.ItemsSource = valores;
+            Valores.Clear();
+            //DGDatos.ItemsSource = valores;
             txtTiempo.Focusable = false;
             sldTiempoV.Visibility = Visibility.Hidden;
 
             autoCalcular();
             
+            //TODO: REVISAR ESTO
             //muestra en el datagrid el último registro
             DGDatos.SelectedItems.Clear();
             object item = DGDatos.Items[DGDatos.Items.Count - 1];
@@ -191,7 +198,7 @@ namespace WpfParadojaGemelos
 
         private void btnGrafico_Click(object sender, RoutedEventArgs e)
         {
-            Grafico frm = new Grafico(valores, Convert.ToInt32(sldTiempoV.Value));
+            Grafico frm = new Grafico(Valores, Convert.ToInt32(sldTiempoV.Value));
             frm.ShowDialog();
         }
 

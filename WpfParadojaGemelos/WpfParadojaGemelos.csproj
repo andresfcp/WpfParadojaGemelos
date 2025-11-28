@@ -22,9 +22,6 @@
     <Resource Include="recursos\cohete.png" />
     <Resource Include="starsship.png" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+	
 
 </Project>
