@@ -11,7 +11,9 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip"
         MinHeight="500" MinWidth="900 "
-        Background="{StaticResource BackgroundBrush}">
+        Background="{StaticResource BackgroundBrush}"
+        Loaded="Window_Loaded"
+        SizeChanged="Window_SizeChanged">
     <Grid Margin="{StaticResource Spacing}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -263,15 +265,15 @@
 
         </Grid>
     </Grid>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
-                        <DoubleAnimation Storyboard.TargetName="AnimacionCohete" Storyboard.TargetProperty="Y" From="0" To="-370" Duration="0:0:2"/>
-                    </ParallelTimeline>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
+    <!--<Window.Triggers>
+     <EventTrigger RoutedEvent="Window.Loaded">
+         <BeginStoryboard>
+             <Storyboard>
+                 <ParallelTimeline RepeatBehavior="Forever" AutoReverse="True">
+                     <DoubleAnimation Storyboard.TargetName="AnimacionCohete" Storyboard.TargetProperty="Y" From="0" To="-370" Duration="0:0:2"/>
+                 </ParallelTimeline>
+             </Storyboard>
+         </BeginStoryboard>
+     </EventTrigger>
+ </Window.Triggers>-->
 </Window>

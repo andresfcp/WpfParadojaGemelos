@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using WpfParadojaGemelos.Models;
 
 namespace WpfParadojaGemelos
@@ -13,6 +13,10 @@ namespace WpfParadojaGemelos
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Storyboard _coheteStoryboard;
+        private DoubleAnimation _animacionCohete;
+        //private readonly DispatcherTimer _resizeTimer = new DispatcherTimer();
+
         //public ObservableCollection<Dato> valores = new ObservableCollection<Dato>();
         public ObservableCollection<Dato> Valores { get; } = new ObservableCollection<Dato>();
 
@@ -28,53 +32,140 @@ namespace WpfParadojaGemelos
 
         private void btnCalcular_Click(object sender, RoutedEventArgs e)
         {
-            calcular();
+            Calcular();
             //MoverCohete();
         }
 
 
-        private async void MoverCohete()
+        //private async void MoverCohete()
+        //{
+        //    int y = 0;
+        //    TranslateTransform mover = new TranslateTransform();
+        //    for (int i = 0; i < 81; i++)
+        //    {
+        //        y = y - 4;
+        //        mover.Y = y;
+        //        imgCohete.RenderTransform = mover;
+        //        await Task.Delay(1).ConfigureAwait(true);
+        //    }
+        //    for (int i = 0; i < 81; i++)
+        //    {                
+        //        y = y + 4;
+        //        mover.Y = y;
+        //        imgCohete.RenderTransform = mover;
+        //        await Task.Delay(1).ConfigureAwait(true);
+        //    }
+        //}
+
+        private void UpdateCoheteAnimation()
         {
-            int y = 0;
-            TranslateTransform mover = new TranslateTransform();
-            for (int i = 0; i < 81; i++)
+            if (imgCohete == null) return;
+
+            // Asegurarse de que el RenderTransform es un TranslateTransform
+            if (!(imgCohete.RenderTransform is TranslateTransform tt))
             {
-                y = y - 4;
-                mover.Y = y;
-                imgCohete.RenderTransform = mover;
-                await Task.Delay(1).ConfigureAwait(true);
+                tt = new TranslateTransform();
+                imgCohete.RenderTransform = tt;
             }
-            for (int i = 0; i < 81; i++)
-            {                
-                y = y + 4;
-                mover.Y = y;
-                imgCohete.RenderTransform = mover;
-                await Task.Delay(1).ConfigureAwait(true);
+
+            // Calcular el desplazamiento necesario, el top deseado es 32 píxeles
+            var topPoint = imgCohete.TranslatePoint(new System.Windows.Point(0, 0), this);
+            double desiredTop = 32.0;
+            double toValue = desiredTop - topPoint.Y;
+
+            if (double.IsNaN(toValue) || double.IsInfinity(toValue)) return;
+            if (Math.Abs(toValue) < 20) toValue = Math.Sign(toValue) * 20;
+
+            // Parar y limpiar storyboard anterior
+            try
+            {
+                _coheteStoryboard?.Stop(imgCohete);
+                _coheteStoryboard?.Remove(imgCohete);
             }
+            catch { }
+
+            // Crear nueva animación con el ToValue calculado
+            _animacionCohete = new DoubleAnimation
+            {
+                From = 0,
+                To = toValue,
+                Duration = TimeSpan.FromSeconds(2),
+                AutoReverse = true,
+                RepeatBehavior = RepeatBehavior.Forever
+            };
+
+            _coheteStoryboard = new Storyboard();
+            _coheteStoryboard.Children.Add(_animacionCohete);
+            //Apuntar la animación al objeto y propiedad correctos
+            Storyboard.SetTarget(_animacionCohete, imgCohete);
+            Storyboard.SetTargetProperty(_animacionCohete, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)"));
+
+            //iniciar la animación
+            _coheteStoryboard.Begin(imgCohete, true);
         }
 
 
-        private void calcular()
+        private void Calcular()
         {
-            //double tViajero = double.Parse(txtTiempo.Text);
-            //double porcentajeC = double.Parse(txtVelocidad.Text,CultureInfo.InvariantCulture);
-
             double tViajero = sldTiempoV.Value;
             double porcentajeC = sldPorcentajeC.Value;
-            double masa = Convert.ToDouble(txtMasaReposo.Text);
 
-            double tObservador = tViajero / (Math.Sqrt(1 - (Math.Pow(porcentajeC, 2) / 10000)));
-            double masaRelativa = masa / (Math.Sqrt(1-(Math.Pow(porcentajeC/100,2))));
-
-            //lblTiempo2.Visibility = Visibility.Visible;
-            lblTiempo2.Content = "Tiempo del Observador";
-            lblResultado.Content = tObservador.ToString();
-            if (masa != 0)
+            // Validar y parsear masa de forma segura
+            if (!double.TryParse(txtMasaReposo.Text,
+                                 System.Globalization.NumberStyles.Float | System.Globalization.NumberStyles.AllowThousands,
+                                 System.Globalization.CultureInfo.CurrentCulture,
+                                 out double masa))
             {
-                txtMasaRelativa.Text = masaRelativa.ToString();
+                MessageBox.Show("Masa inválida. Introduzca un número válido.", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                txtMasaReposo.Focus();
+                txtMasaReposo.SelectAll();
+                return;
             }
 
-            Valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = porcentajeC, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
+            // Caso límite: 100% de la velocidad de la luz => división por cero en las fórmulas
+            if (Math.Abs(porcentajeC - 100.0) < double.Epsilon)
+            {
+                lblTiempo2.Content = "Tiempo del Observador";
+                lblResultado.Content = "∞"; // o usa "Infinito" si prefieres texto
+                txtMasaRelativa.Text = masa == 0 ? "0" : "∞";
+
+                Valores.Add(new Dato()
+                {
+                    Tiempo_Viajero = tViajero,
+                    Porcentaje_C = porcentajeC,
+                    Tiempo_Observador = double.PositiveInfinity,
+                    Masa_Relativa = double.PositiveInfinity
+                });
+
+                return;
+            }
+
+            // Cálculos normales (porcentajeC está en 0..100 y distinto de 100)
+            double tObservador = tViajero / Math.Sqrt(1 - (Math.Pow(porcentajeC, 2) / 10000.0));
+            double masaRelativa = masa;
+            if (masa != 0)
+            {
+                masaRelativa = masa / Math.Sqrt(1 - Math.Pow(porcentajeC / 100.0, 2));
+            }
+
+            lblTiempo2.Content = "Tiempo del Observador";
+            lblResultado.Content = tObservador.ToString("G", System.Globalization.CultureInfo.CurrentCulture);
+            if (masa != 0)
+            {
+                txtMasaRelativa.Text = masaRelativa.ToString("F6", System.Globalization.CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                txtMasaRelativa.Text = "0";
+            }
+
+            Valores.Add(new Dato()
+            {
+                Tiempo_Viajero = tViajero,
+                Porcentaje_C = porcentajeC,
+                Tiempo_Observador = tObservador,
+                Masa_Relativa = masaRelativa
+            });
         }
 
         private void autoCalcular()
@@ -93,7 +184,14 @@ namespace WpfParadojaGemelos
 				lblTiempo2.Content = "Tiempo del Observador";
                 lblResultado.Content = tObservador.ToString();
 
-                Valores.Add(new Dato() { Tiempo_Viajero = tViajero, Porcentaje_C = i, Tiempo_Observador = tObservador, Masa_Relativa = masaRelativa });
+                Valores.Add(new Dato() 
+                { 
+                    Tiempo_Viajero = tViajero, 
+                    Porcentaje_C = i, 
+                    Tiempo_Observador = 
+                    tObservador, 
+                    Masa_Relativa = masaRelativa 
+                });
             }
         }
 
@@ -200,6 +298,20 @@ namespace WpfParadojaGemelos
             btnGrafico.Visibility = Visibility.Hidden;
             txtTiempo.Focusable = true;
             sldTiempoV.Visibility = Visibility.Visible;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateCoheteAnimation();
+            //Dispatcher.BeginInvoke((Action)(() => UpdateCoheteAnimation()), DispatcherPriority.Loaded);
+        }
+
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateCoheteAnimation();
+            //_resizeTimer.Stop();
+            //_resizeTimer.Start();
         }
         #endregion
     }
