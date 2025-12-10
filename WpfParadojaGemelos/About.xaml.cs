@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Documents;
+using System.Windows.Navigation;
 
 
 namespace WpfParadojaGemelos
@@ -16,21 +16,18 @@ namespace WpfParadojaGemelos
             InitializeComponent();
         }
 
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             try
             {
-                if (sender.GetType() != typeof(Hyperlink)) 
-                    return; 
-                string link = ((Hyperlink)sender).NavigateUri.ToString(); 
-                Process.Start(link);
-                //Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-                e.Handled = true;
+                var psi = new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true };
+                Process.Start(psi);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"No se pudo abrir el navegador: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            e.Handled = true;
         }
     }
 }
