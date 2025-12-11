@@ -1,9 +1,9 @@
-﻿<Window x:Class="WpfParadojaGemelos.About"
+﻿<Window x:Class="WpfParadojaGemelos.Views.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfParadojaGemelos"
+        xmlns:local="clr-namespace:WpfParadojaGemelos.Views"
         mc:Ignorable="d"
         Title="Acerca de..." Height="336" Width="350" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" MinHeight="336" MinWidth="336">
     <Grid>
@@ -18,7 +18,7 @@
         <Image x:Name="logo" HorizontalAlignment="Center" Height="98" VerticalAlignment="Center" Width="100" Source="/recursos/acortes.png"/>
         <StackPanel Grid.Row="1">
             <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.8b" FontSize="12" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="Versión 0.9b" FontSize="12" HorizontalAlignment="Center"/>
             <TextBlock/>
             <TextBlock x:Name="tblAcortes" TextWrapping="Wrap" Text="ACortes Software Team:" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBlock x:Name="tblnombre" TextWrapping="Wrap" Text="Andrés Cortés" FontSize="12" HorizontalAlignment="Center" />
@@ -28,7 +28,7 @@
             <TextBlock></TextBlock>
             <TextBlock x:Name="tblCopyRight" TextWrapping="Wrap" Text="©2024 - ACortes Software" HorizontalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center">
-                <Span xml:space="preserve"><Hyperlink NavigateUri="https://acortes.co/" RequestNavigate="Hyperlink_RequestNavigate">acortes.co</Hyperlink></Span>
+            <Span xml:space="preserve"><Hyperlink NavigateUri="https://acortes.co/" RequestNavigate="Hyperlink_RequestNavigate">acortes.co</Hyperlink></Span>
             </TextBlock>
             <!--<HyperlinkButton Content="Help" NavigateUri="http://acortes.co/>-->
         </StackPanel>
