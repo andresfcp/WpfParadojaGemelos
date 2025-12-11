@@ -36,26 +36,27 @@ namespace WpfParadojaGemelos
             //MoverCohete();
         }
 
-
-        //private async void MoverCohete()
-        //{
-        //    int y = 0;
-        //    TranslateTransform mover = new TranslateTransform();
-        //    for (int i = 0; i < 81; i++)
-        //    {
-        //        y = y - 4;
-        //        mover.Y = y;
-        //        imgCohete.RenderTransform = mover;
-        //        await Task.Delay(1).ConfigureAwait(true);
-        //    }
-        //    for (int i = 0; i < 81; i++)
-        //    {                
-        //        y = y + 4;
-        //        mover.Y = y;
-        //        imgCohete.RenderTransform = mover;
-        //        await Task.Delay(1).ConfigureAwait(true);
-        //    }
-        //}
+        /*
+        private async void MoverCohete()
+        {
+            int y = 0;
+            TranslateTransform mover = new TranslateTransform();
+            for (int i = 0; i < 81; i++)
+            {
+                y = y - 4;
+                mover.Y = y;
+                imgCohete.RenderTransform = mover;
+                await Task.Delay(1).ConfigureAwait(true);
+            }
+            for (int i = 0; i < 81; i++)
+            {
+                y = y + 4;
+                mover.Y = y;
+                imgCohete.RenderTransform = mover;
+                await Task.Delay(1).ConfigureAwait(true);
+            }
+        }
+        */
 
         private void UpdateCoheteAnimation()
         {
@@ -68,9 +69,9 @@ namespace WpfParadojaGemelos
                 imgCohete.RenderTransform = tt;
             }
 
-            // Calcular el desplazamiento necesario, el top deseado es 32 píxeles
+            // Calcular el desplazamiento necesario, el top deseado es 16 píxeles
             var topPoint = imgCohete.TranslatePoint(new System.Windows.Point(0, 0), this);
-            double desiredTop = 32.0;
+            double desiredTop = 16.0;
             double toValue = desiredTop - topPoint.Y;
 
             if (double.IsNaN(toValue) || double.IsInfinity(toValue)) return;
