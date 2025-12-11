@@ -27,43 +27,56 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal" 
+                        VerticalAlignment="Center" 
+                        Margin="0,0,0,8">
                 <Button x:Name="btnLimpiarGrid"
-                Style="{DynamicResource PlantilllaBotonAzul}"
-                Content="Limpiar"
-                Width="84" Height="28"
-                Click="btnLimpiarGrid_Click"
-                TabIndex="3"
-                ToolTip="Limpia la tabla de valores"
-                AutomationProperties.Name="Botón Limpiar"/>
+                        Style="{DynamicResource PlantilllaBotonAzul}"
+                        Content="Limpiar"
+                        Width="84" Height="28"
+                        Click="btnLimpiarGrid_Click"
+                        TabIndex="3"
+                        ToolTip="Limpia la tabla de valores"
+                        AutomationProperties.Name="Botón Limpiar"/>
                 <Button x:Name="btnEliminarElemento"
-                Style="{DynamicResource PlantilllaBotonAzul}"
-                Content="Eliminar"
-                Width="84" Height="28"
-                Margin="{StaticResource Spacing}"
-                Click="btnEliminarElemento_Click"
-                TabIndex="3"
-                ToolTip="Elimina el elemento seleccionado"
-                AutomationProperties.Name="Botón Eliminar"/>
+                        Style="{DynamicResource PlantilllaBotonAzul}"
+                        Content="Eliminar"
+                        Width="84" Height="28"
+                        Margin="{StaticResource Spacing}"
+                        Click="btnEliminarElemento_Click"
+                        TabIndex="3"
+                        ToolTip="Elimina el elemento seleccionado"
+                        AutomationProperties.Name="Botón Eliminar"/>
             </StackPanel>
 
             <DataGrid x:Name="DGDatos"
-                Grid.Row="1"
-                AutoGenerateColumns="False"
-                Margin="0"
-                IsReadOnly="True"
-                Style="{StaticResource BaseDataGrid}">
+                      Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      Margin="0"
+                      IsReadOnly="True"
+                      Style="{StaticResource BaseDataGrid}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="T. Viajero" Binding="{Binding Tiempo_Viajero}" />
-                    <DataGridTextColumn Header="% C" Binding="{Binding Porcentaje_C}" />
-                    <DataGridTextColumn Header="T. Observador" Binding="{Binding Tiempo_Observador, StringFormat={}{0:F8}}" />
-                    <DataGridTextColumn Header="Masa relativa" Binding="{Binding Masa_Relativa, StringFormat={}{0:F6}}" />
+                    <DataGridTextColumn Header="T. Viajero" 
+                                        Binding="{Binding Tiempo_Viajero}" />
+                    <DataGridTextColumn Header="% C" 
+                                        Binding="{Binding Porcentaje_C}" />
+                    <DataGridTextColumn Header="T. Observador" 
+                                        Binding="{Binding Tiempo_Observador, StringFormat={}{0:F8}}" />
+                    <DataGridTextColumn Header="Masa relativa" 
+                                        Binding="{Binding Masa_Relativa, StringFormat={}{0:F6}}" />
                     <DataGridTemplateColumn Header="%" Width="100">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <ProgressBar Minimum="0" Maximum="100" Value="{Binding Porcentaje_C ,Mode=OneWay}" Background="Transparent" Height="12"/>
-                                    <TextBlock Text="{Binding Porcentaje_C}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource TextPrimaryBrush}" FontSize="{StaticResource Caption}"/>
+                                    <ProgressBar Minimum="0" 
+                                                 Maximum="100" Value="{Binding Porcentaje_C ,Mode=OneWay}" 
+                                                 Background="Transparent" 
+                                                 Height="12"/>
+                                    <TextBlock Text="{Binding Porcentaje_C}" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               Foreground="{StaticResource TextPrimaryBrush}" 
+                                               FontSize="{StaticResource Caption}"/>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -73,20 +86,22 @@
         </Grid>
         <!-- Imagen cohete intermedia -->
         <Image x:Name="imgCohete"
-           Source="/starsship.png"
-           Grid.Column="1"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Bottom"
-           Height="81"
-           Margin="{StaticResource Spacing}"
-           AutomationProperties.Name="Imagen Cohete">
+               Source="/starsship.png"
+               Grid.Column="1"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Bottom"
+               Height="81"
+               Margin="{StaticResource Spacing}"
+               AutomationProperties.Name="Imagen Cohete">
             <Image.RenderTransform>
                 <TranslateTransform x:Name="AnimacionCohete" X="0" Y="0"/>
             </Image.RenderTransform>
         </Image>
 
         <!-- Panel derecho: controles -->
-        <Grid x:Name="grdContoles" Grid.Column="2" Margin="16,0,0,0">
+        <Grid x:Name="grdContoles"
+              Grid.Column="2" 
+              Margin="16,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -94,16 +109,18 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Button x:Name="btnAbout"
-              Style="{DynamicResource PlantilllaBotonAzul}"
-              Width="36" Height="36"
-              HorizontalAlignment="Right"
-              Click="btnAbout_Click"
-              ToolTip="Acerca de..."
-              AutomationProperties.Name="Botón Acerca de">
+                    Style="{DynamicResource PlantilllaBotonAzul}"
+                    Width="36" Height="36"
+                    HorizontalAlignment="Right"
+                    Click="btnAbout_Click"
+                    ToolTip="Acerca de..."
+                    AutomationProperties.Name="Botón Acerca de">
                 <Image Source="/acercade.png" />
             </Button>
 
-            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,8,0,0">
+            <StackPanel Grid.Row="1" 
+                        Orientation="Vertical"
+                        Margin="0,8,0,0">
                 <Label x:Name="lblTiempo" 
                        Content="Tiempo del viajero" 
                        HorizontalAlignment="Left" 
@@ -180,7 +197,9 @@
                         <ColumnDefinition Width="160"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="{StaticResource Spacing}">
+                    <StackPanel Grid.Column="0" 
+                                Orientation="Vertical" 
+                                Margin="{StaticResource Spacing}">
                         <Label Content="Masa" 
                                FontWeight="Bold" 
                                FontSize="16" 
@@ -196,7 +215,9 @@
                                  TabIndex="2"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="{StaticResource Spacing}">
+                    <StackPanel Grid.Column="1" 
+                                Orientation="Vertical" 
+                                Margin="{StaticResource Spacing}">
                         <Label Content="Masa Relativa" 
                                FontWeight="Bold" 
                                FontSize="16" 
@@ -238,7 +259,10 @@
                     </Grid>
             </StackPanel>
             
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <StackPanel Grid.Row="2" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,8,0,0">
                 <Button x:Name="btnCalcular" 
                         Style="{DynamicResource PlantilllaBotonVerde}" 
                         Content="Calcular"
@@ -250,7 +274,9 @@
                         AutomationProperties.Name="Botón Calcular"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Orientation="Vertical" Margin="0,8,0,0">
+            <StackPanel Grid.Row="3" 
+                        Orientation="Vertical" 
+                        Margin="0,8,0,0">
                 <Label x:Name="lblTiempo2" 
                        Content="" 
                        HorizontalAlignment="Left"  

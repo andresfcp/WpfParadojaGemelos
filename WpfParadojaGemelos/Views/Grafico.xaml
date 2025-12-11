@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WpfParadojaGemelos"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="Gráfico" Height="450" Width="800" Icon="/recursos/acortes.png" WindowStartupLocation="CenterScreen">
+        Title="Gráfico" Height="450" Width="800" 
+        Icon="/recursos/acortes.png" 
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <oxy:PlotView Model="{Binding PlotModel}" x:Name="Grafica" />        
     </Grid>

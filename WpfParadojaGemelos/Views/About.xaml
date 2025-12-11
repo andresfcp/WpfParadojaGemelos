@@ -6,7 +6,11 @@
         xmlns:viewmodels="clr-namespace:WpfParadojaGemelos.ViewModels"
         xmlns:local="clr-namespace:WpfParadojaGemelos.Views"
         mc:Ignorable="d"
-        Title="Acerca de..." Height="336" Width="350" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" MinHeight="336" MinWidth="336">
+        Title="Acerca de..." 
+        Height="336" Width="350" 
+        WindowStyle="ToolWindow" 
+        MinHeight="336" MinWidth="336"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <viewmodels:AboutViewModel/>
     </Window.DataContext>
@@ -19,20 +23,57 @@
 
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="logo" HorizontalAlignment="Center" Height="98" VerticalAlignment="Center" Width="100" Source="/recursos/acortes.png"/>
+        <Image x:Name="logo" 
+               HorizontalAlignment="Center" 
+               Height="98" 
+               VerticalAlignment="Center" 
+               Width="100" 
+               Source="/recursos/acortes.png"/>
         <StackPanel Grid.Row="1">
-            <TextBlock x:Name="tblTitulo" TextWrapping="Wrap" Text="Paradoja de los Gemelos" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="tblVersion" TextWrapping="Wrap" Text="{Binding Version}" FontSize="12" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblTitulo" 
+                       TextWrapping="Wrap" 
+                       Text="Paradoja de los Gemelos" 
+                       FontSize="18" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblVersion" 
+                       TextWrapping="Wrap" 
+                       Text="{Binding Version}" 
+                       FontSize="12" 
+                       HorizontalAlignment="Center"/>
             <TextBlock/>
-            <TextBlock x:Name="tblAcortes" TextWrapping="Wrap" Text="ACortes Software Team:" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" />
-            <TextBlock x:Name="tblnombre" TextWrapping="Wrap" Text="Andrés Cortés" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock x:Name="tblAcortes" 
+                       TextWrapping="Wrap" 
+                       Text="ACortes Software Team:" 
+                       FontSize="12" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" />
+            <TextBlock x:Name="tblnombre" 
+                       TextWrapping="Wrap" 
+                       Text="Andrés Cortés" 
+                       FontSize="12" 
+                       HorizontalAlignment="Center" />
             <TextBlock/>
-            <TextBlock x:Name="tblTitulo_Copy1" TextWrapping="Wrap" Text="Agradecimientos a:" FontSize="12" HorizontalAlignment="Center" FontWeight="Bold" />
-            <TextBlock x:Name="tblTitulo_Copy3" TextWrapping="Wrap" Text="N. Maldonado" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock x:Name="tblTitulo_Copy1" 
+                       TextWrapping="Wrap" 
+                       Text="Agradecimientos a:" 
+                       FontSize="12" 
+                       HorizontalAlignment="Center" 
+                       FontWeight="Bold" />
+            <TextBlock x:Name="tblTitulo_Copy3" 
+                       TextWrapping="Wrap" 
+                       Text="N. Maldonado" 
+                       FontSize="12" 
+                       HorizontalAlignment="Center" />
             <TextBlock></TextBlock>
-            <TextBlock x:Name="tblCopyRight" TextWrapping="Wrap" Text="©2024 - ACortes Software" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblCopyRight" 
+                       TextWrapping="Wrap" 
+                       Text="©2024 - ACortes Software" 
+                       HorizontalAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center">
-            <Span xml:space="preserve"><Hyperlink NavigateUri="{Binding Url}" RequestNavigate="Hyperlink_RequestNavigate">acortes.co</Hyperlink></Span>
+                <Span xml:space="preserve">
+                    <Hyperlink NavigateUri="{Binding Url}" RequestNavigate="Hyperlink_RequestNavigate">acortes.co</Hyperlink>
+                </Span>
             </TextBlock>
             <!--<HyperlinkButton Content="Help" NavigateUri="http://acortes.co/>-->
         </StackPanel>

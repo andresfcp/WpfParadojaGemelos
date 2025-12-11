@@ -19,10 +19,10 @@ namespace WpfParadojaGemelos.ViewModels
 
         public GraficoViewModel(ObservableCollection<Dato> valores, int tiempoViajero)
         {
-            BuildPlotModel(valores, tiempoViajero);
+            ConstruirModeloGrafico(valores, tiempoViajero);
         }
 
-        private void BuildPlotModel(ObservableCollection<Dato> valores, int tiempoViajero)
+        private void ConstruirModeloGrafico(ObservableCollection<Dato> valores, int tiempoViajero)
         {
             if (valores == null)
             {
@@ -30,7 +30,7 @@ namespace WpfParadojaGemelos.ViewModels
                 return;
             }
 
-            var ordered = new ObservableCollection<Dato>(valores.OrderBy(x => x.Porcentaje_C));
+            var valoresOrdenados = new ObservableCollection<Dato>(valores.OrderBy(x => x.Porcentaje_C));
 
             var model = new PlotModel { Title = "Tiempo Observador vs. % Vel Luz" };
 
@@ -50,7 +50,7 @@ namespace WpfParadojaGemelos.ViewModels
             model.Axes.Add(ejeY);
 
             var linea = new LineSeries();
-            foreach (var dato in ordered)
+            foreach (var dato in valoresOrdenados)
             {
                 linea.Points.Add(new DataPoint(dato.Porcentaje_C, dato.Tiempo_Observador));
             }
