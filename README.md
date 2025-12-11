@@ -40,7 +40,8 @@ En la UI la velocidad de la luz en el vacío se introduce como porcentaje de `C`
 
 1. Clonar el repositorio:
 ``` bash
-git clone https://github.com/andresfcp/WpfParadojaGemelos.git cd WpfParadojaGemelos
+git clone https://github.com/andresfcp/WpfParadojaGemelos.git 
+cd WpfParadojaGemelos
 ```
 
 2. Abrir la solución en Visual Studio 2026: __File > Open > Project/Solution__ y seleccionar la solución.
