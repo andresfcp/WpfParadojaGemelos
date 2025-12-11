@@ -15,9 +15,11 @@ Fácil de usar, registra resultados en un `ObservableCollection<Dato>` y permite
 
 Tiempo del observador (to) en función del tiempo del viajero (tv) y la velocidad V:
 
-to = tv / sqrt(1 - (V^2 / C^2))
+$$
+to=\left(\frac{tv}{\sqrt{\frac{1-V^2}{C^2}}}\right)
+$$
 
-En la UI la velocidad se introduce como porcentaje de `c` (por ejemplo, `porcentaje = 90` significa V = 0.9·C). La aplicación controla el caso límite de 100% de la velocidad de la luz y evita divisiones por cero mostrando "∞".
+En la UI la velocidad de la luz en el vacío se introduce como porcentaje de `C` (por ejemplo, `porcentaje = 90` significa V = 0.9·C). La aplicación controla el caso límite de 100% de la velocidad de la luz y evita divisiones por cero mostrando "∞".
 
 ## Características principales
 
@@ -37,8 +39,9 @@ En la UI la velocidad se introduce como porcentaje de `c` (por ejemplo, `porcent
 ## Compilar y ejecutar
 
 1. Clonar el repositorio:
-
-````````
+``` bash
+git clone https://github.com/andresfcp/WpfParadojaGemelos.git cd WpfParadojaGemelos
+```
 
 2. Abrir la solución en Visual Studio 2026: __File > Open > Project/Solution__ y seleccionar la solución.
 
