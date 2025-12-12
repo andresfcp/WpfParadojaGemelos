@@ -92,7 +92,7 @@
         </Grid>
         <!-- Imagen cohete intermedia -->
         <Image x:Name="imgCohete"
-               Source="/starsship.png"
+               Source="/recursos/starsship.png"
                Grid.Column="1"
                HorizontalAlignment="Center"
                VerticalAlignment="Bottom"
@@ -121,7 +121,7 @@
                     Command="{Binding OpenAboutCommand}"
                     ToolTip="Acerca de..."
                     AutomationProperties.Name="Botón Acerca de">
-                <Image Source="/acercade.png" />
+                <Image Source="/recursos/acercade.png" />
             </Button>
 
             <StackPanel Grid.Row="1" 
